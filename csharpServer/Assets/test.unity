@@ -140,11 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 24726334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 102e73087471ddb4f9694b6f2802e3a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 05862480197040e40b58eaa722b4ae61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  host: localhost
-  port: 5555
+  Connected: 0
 --- !u!81 &24726336
 AudioListener:
   m_ObjectHideFlags: 0
