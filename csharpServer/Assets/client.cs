@@ -6,7 +6,7 @@ using System;
 public class client : MonoBehaviour {
 
     public string msg;
-    public float[] fm;
+    public float[] cmd,fm;
 
     private NetMqListener _netMqListener;
 
@@ -31,7 +31,20 @@ public class client : MonoBehaviour {
         //         var y = float.Parse(splittedStrings[1]);
         //         var z = float.Parse(splittedStrings[2]);
         //         transform.position = new Vector3(x, y, z);
-        Buffer.BlockCopy(b, 0, fm, 0, 4);
+        if (msg.Equals("s01"))
+        {
+            Buffer.BlockCopy(b, 0, cmd, 0, 4);
+        }
+        else if(msg.Equals("m64"))
+        {
+            Buffer.BlockCopy(b, 0, fm, 0, 256);
+
+        }
+        else if (msg.Equals("m04"))
+        {
+            Buffer.BlockCopy(b, 0, fm, 0, 4 * 4);
+
+        }
         //fm = f;
     }
 
@@ -40,7 +53,8 @@ public class client : MonoBehaviour {
         _netMqListener = new NetMqListener(HandleMessage, HandleFMessage, topic);
         _netMqListener.Start();
 
-        fm = new float[1];
+        cmd = new float[1];
+        fm = new float[64];
     }
 
     private void Update()

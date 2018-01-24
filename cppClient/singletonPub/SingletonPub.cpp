@@ -47,6 +47,15 @@ bool SingletonPub::s_send(const float & f)
 	return (rc);
 }
 
+bool SingletonPub::s_send(float f[], int len)
+{
+	zmq::message_t message(4 * len);
+	memcpy(message.data(), &f[0], 4 * len);
+
+	bool rc = m_socket->send(message);
+	return (rc);
+}
+
 void SingletonPub::connect()
 {
 	m_socket->bind("tcp://*:5563");
@@ -56,6 +65,12 @@ void SingletonPub::send(std::string topic, float msg)
 {
 	s_sendmore(topic);
 	s_send(msg);
+}
+
+void SingletonPub::send(std::string topic, float msg[])
+{
+	s_sendmore(topic);
+	s_send(msg, 4);
 }
 
 SingletonPub* SingletonPub::m_instance = NULL;

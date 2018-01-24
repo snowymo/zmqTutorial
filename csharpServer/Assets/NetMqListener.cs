@@ -61,7 +61,7 @@ public class NetMqListener
             {
                 break;
             }
-            float f;
+            //float f;
             byte[] b;
             if (_messageFQueue.TryDequeue(out b))
             {

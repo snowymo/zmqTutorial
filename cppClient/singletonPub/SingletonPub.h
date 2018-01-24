@@ -23,6 +23,8 @@ public:
 
 	void send(std::string topic, float msg);
 
+	void send(std::string topic, float msg[]);
+
 private:
 	//  Sends string as 0MQ string, as multipart non-terminal
 	bool s_sendmore(std::string string);
@@ -31,6 +33,8 @@ private:
 	bool s_send(std::string string);
 
 	bool s_send(const float & f);
+
+	bool s_send(float f[], int len);
 
 private:
 	static SingletonPub* m_instance;
