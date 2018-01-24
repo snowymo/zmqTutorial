@@ -3,3 +3,7 @@ build*
 *.VC.VC.opendb
 Temp/
 Library/
+*.db
+*.meta
+*metadata
+*/metadata/*

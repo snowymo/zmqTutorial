@@ -24,6 +24,7 @@ public class server : MonoBehaviour {
     private string HandleMessage(string message)
     {
         // Not on main thread
+        Debug.Log("handle message");
         return _response;
     }
 
